@@ -32,7 +32,7 @@ jobs:
         run: pip install pipenv
 
       - name: Install dependencies
-        run: pipenv install --dev
+        run: pipenv install --dev --skip-lock
 
       - name: Run lint
         run: pipenv run lint
@@ -55,7 +55,7 @@ jobs:
         run: pip install pipenv
 
       - name: Install dependencies
-        run: pipenv install --dev
+        run: pipenv install --dev --skip-lock
 
       - name: Run tests
         run: pipenv run test
@@ -123,3 +123,4 @@ jobs:
         run: |
           kustomize edit set image backend=$ECR_REGISTRY/${{ env.ECR_REPOSITORY }}:$IMAGE_TAG
           kustomize build | kubectl apply -f -
+
